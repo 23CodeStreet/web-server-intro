@@ -4,7 +4,8 @@
   "description": "23-codestreet web intro project",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start:dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "license": "BSD-3-Clause",
   "dependencies": {
