@@ -2,6 +2,8 @@ var express = require('express')
 var mustache = require('mustache-express');
 var bodyParser = require('body-parser');
 
+var port = process.env.PORT || 3000;
+
 
 var state = {
   messages: [{
@@ -41,7 +43,6 @@ app.get('/chat', function (req, res) {
   res.render('chat', {messages: state.messages});
 });
 
-var port = 3000
 app.listen(port, function () {
   console.log(`Example app listening on port ${port}!`);
 });
