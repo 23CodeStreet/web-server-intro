@@ -43,6 +43,15 @@ app.get('/chat', function (req, res) {
   res.render('chat', {messages: state.messages});
 });
 
+app.post('/chat', function (req, res) {
+	var newMessage = {};
+	newMessage.username = req.body.username;
+	newMessage.text = req.body.text;
+	newMessage.id = state.messages.length;
+	state.messages.push(newMessage);
+  res.render('messages', {messages: state.messages});
+});
+
 app.listen(port, function () {
   console.log(`Example app listening on port ${port}!`);
 });
