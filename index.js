@@ -22,11 +22,16 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', function (req, res) {
-  var name = req.query.name;
-  if (!name) {
-    name = "Unknown Person";
-  }
-  res.render('hello', {name: name});
+  res.render('chat', {messages: state.messages});
+});
+
+app.post('/', function (req, res) {
+	var newMessage = {};
+	newMessage.username = req.body.username;
+	newMessage.text = req.body.text;
+	newMessage.id = state.messages.length;
+	state.messages.push(newMessage);
+  res.render('messages', {messages: state.messages});
 });
 
 app.get('/test', function (req, res) {
@@ -37,19 +42,6 @@ app.get('/test', function (req, res) {
 app.post('/somedata', function (req, res) {
   console.log(req.body);
   res.send('OK');
-});
-
-app.get('/chat', function (req, res) {
-  res.render('chat', {messages: state.messages});
-});
-
-app.post('/chat', function (req, res) {
-	var newMessage = {};
-	newMessage.username = req.body.username;
-	newMessage.text = req.body.text;
-	newMessage.id = state.messages.length;
-	state.messages.push(newMessage);
-  res.render('messages', {messages: state.messages});
 });
 
 app.listen(port, function () {
