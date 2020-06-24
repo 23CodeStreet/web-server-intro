@@ -21,6 +21,7 @@ app.set('views', __dirname + '/public/views');
 
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/', function (req, res) {
@@ -39,7 +40,6 @@ app.post('/bodytest', function (req, res) {
 
 app.post('/messages', function (req, res) {
 	var newMessage = {};
-  console.log(req.body);
 	newMessage.username = req.body.username;
 	newMessage.text = req.body.text;
 	newMessage.id = state.messages.length;
