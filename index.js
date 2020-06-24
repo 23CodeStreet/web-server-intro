@@ -27,6 +27,16 @@ app.get('/', function (req, res) {
   res.render('chat', {messages: state.messages});
 });
 
+app.get('/querytest', function (req, res) {
+  console.log(req.query);
+  res.send('OK');
+});
+
+app.post('/bodytest', function (req, res) {
+  console.log(req.body);
+  res.send('OK');
+});
+
 app.post('/messages', function (req, res) {
 	var newMessage = {};
 	newMessage.username = req.body.username;
@@ -34,16 +44,6 @@ app.post('/messages', function (req, res) {
 	newMessage.id = state.messages.length;
 	state.messages.push(newMessage);
   res.render('chat', {messages: state.messages});
-});
-
-app.get('/test', function (req, res) {
-  console.log(req.query);
-  res.send('OK');
-});
-
-app.post('/somedata', function (req, res) {
-  console.log(req.body);
-  res.send('OK');
 });
 
 app.get('/messages', function (req, res) {
