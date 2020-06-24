@@ -46,6 +46,21 @@ app.post('/somedata', function (req, res) {
   res.send('OK');
 });
 
+app.get('/messages', function (req, res) {
+  var lastSeenID = req.query.lastSeenID || -1;
+  var response = {
+    messages: [],
+  };
+  for (var i = 0; i < state.messages.length; i++) {
+    var m = state.messages[i];
+    if (m.id > lastSeenID) {
+      response.messages.push(m);
+    }
+  }
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify(response));
+});
+
 app.listen(port, function () {
   console.log(`Example app listening on port ${port}!`);
 });
