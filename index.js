@@ -1,4 +1,5 @@
 var express = require('express')
+var cors = require('cors')
 var mustache = require('mustache-express');
 var bodyParser = require('body-parser');
 
@@ -20,6 +21,7 @@ app.set('views', __dirname + '/public/views');
 
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
 
 app.get('/', function (req, res) {
   res.render('chat', {messages: state.messages});
