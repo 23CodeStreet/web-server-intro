@@ -39,6 +39,7 @@ app.post('/bodytest', function (req, res) {
 
 app.post('/messages', function (req, res) {
 	var newMessage = {};
+  console.log(req.body);
 	newMessage.username = req.body.username;
 	newMessage.text = req.body.text;
 	newMessage.id = state.messages.length;
