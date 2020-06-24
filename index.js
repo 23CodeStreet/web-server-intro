@@ -27,7 +27,7 @@ app.get('/', function (req, res) {
   res.render('chat', {messages: state.messages});
 });
 
-app.post('/', function (req, res) {
+app.post('/messages', function (req, res) {
 	var newMessage = {};
 	newMessage.username = req.body.username;
 	newMessage.text = req.body.text;
