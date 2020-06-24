@@ -31,7 +31,7 @@ app.post('/', function (req, res) {
 	newMessage.text = req.body.text;
 	newMessage.id = state.messages.length;
 	state.messages.push(newMessage);
-  res.render('messages', {messages: state.messages});
+  res.render('chat', {messages: state.messages});
 });
 
 app.get('/test', function (req, res) {
