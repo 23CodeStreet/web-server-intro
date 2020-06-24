@@ -43,7 +43,7 @@ app.post('/messages', function (req, res) {
 	newMessage.text = req.body.text;
 	newMessage.id = state.messages.length;
 	state.messages.push(newMessage);
-  res.render('chat', {messages: state.messages});
+  res.send('OK');
 });
 
 app.get('/messages', function (req, res) {
